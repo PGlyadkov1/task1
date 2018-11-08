@@ -1,9 +1,9 @@
 
 puts "Введите длину основания треугольника"
-a = Float(gets.chomp)
+a = gets.chomp.to_f
 
 puts "Введите длину высоты треугольника"
-h = Float(gets.chomp)
+h = gets.chomp.to_f
 
-puts "Площадь этого треугольника равна #{a*h/2}"
-
+area = a * h / 2.0
+puts "Площадь этого треугольника равна #{area}"

@@ -1,31 +1,28 @@
 
 puts "Введите a"
-a = Float(gets.chomp)
+a = gets.chomp.to_f
 
 puts "Введите b"
-b = Float(gets.chomp)
+b = gets.chomp.to_f
 
 puts "Введите c"
-c = Float(gets.chomp)
+c = gets.chomp.to_f
 
-d = b**2 - 4*a*c
+d = b**2 - 4.0 * a * c
 
-if d >= 0
-	if d > 0
-		x_1 = (-b + Math.sqrt(d) ) / (2*a)
-		x_2 = (-b - Math.sqrt(d) ) / (2*a)
+puts "Дискриминант равен #{d}"
 
-		puts "Дискриминант равен #{d}"
-		puts "Корни равны #{x_1} и #{x_2}"
+d_sqrt = Math.sqrt(d)
 
-	elsif d = 0
-		puts "Дискриминант равен #{d}"
-		puts "Корень равен #{-1 * b / (2*a)}"
+if d.positive?
+  x_1 = ( - b + d_sqrt ) / (2.0 * a)
+  x_2 = ( - b - d_sqrt ) / (2.0 * a)
+  puts "Корни равны #{x_1} и #{x_2}"
 
-	end
-		
+elsif d.zero?
+  x = - b / (2.0 * a)
+  puts "Корень равен #{x}"
 
 else
-	puts "Дискриминант равен #{d}"
-	puts "Корней нет"
+  puts "Корней нет"
 end

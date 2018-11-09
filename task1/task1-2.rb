@@ -1,9 +1,9 @@
 
 puts "Введите длину основания треугольника"
-a = gets.to_f
+base = gets.to_f
 
 puts "Введите длину высоты треугольника"
-h = gets.to_f
+height = gets.to_f
 
-area = a * h / 2.0
+area = base * height / 2.0
 puts "Площадь этого треугольника равна #{area}"

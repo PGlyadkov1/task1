@@ -1,19 +1,19 @@
 
 
 puts "Введите длину 1-ой стороны треугольника"
-a = gets.chomp.to_f
+a = gets.to_f
 
 puts "Введите длину 2-ой стороны треугольника"
-b = gets.chomp.to_f
+b = gets.to_f
 
 puts "Введите длину 3-ей стороны треугольника"
-c = gets.chomp.to_f
+c = gets.to_f
 
 sides = [a,b,c].sort
 
 right_triangle = sides[2]**2 == sides[0]**2 + sides[1]**2
 
-equal_sides = ( a == b) && (a == c)
+equal_sides = a == b && a == c
 
 if right_triangle && sides[0] == sides[1]
   puts "Это прямоугольный равнобедренный треугольник"

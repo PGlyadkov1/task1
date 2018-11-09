@@ -3,7 +3,7 @@ puts "Как вас зовут?"
 username = gets.chomp.capitalize
 
 puts "Каков ваш рост?"
-user_height = gets.chomp.to_i
+user_height = gets.to_i
 
 ideal_weight = user_height - 110
 

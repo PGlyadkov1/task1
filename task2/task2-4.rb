@@ -1,10 +1,10 @@
 
-hash = Hash.new
+hash = {}
+vowels_hash = {}
 
-("a".."z").to_a.each_with_index { |item, index|
-  hash[item] = index
-}
+vowels = %w[a e i o u y]
+('a'..'z').each_with_index do |letter, index|
+  vowels_hash[letter] = index + 1 if vowels.include?(letter)
+end
 
-hash2 = hash.reject { |k, v| (k != "a") && (k != "e") && (k != "y") && (k != "u") && (k != "i") && (k != "o") }
-
-puts hash2
+puts vowels_hash

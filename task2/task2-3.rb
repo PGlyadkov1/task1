@@ -1,7 +1,7 @@
 
 n = 100
 
-fibb = Array.new
+fibb = []
 
 #в зависимости от определения последовательность Фиббоначи начинается с нуля или с единицы. 
 
@@ -9,16 +9,13 @@ fibb = Array.new
 fibb[0] = 0
 fibb[1] = 1
 
-for num in 2..n
-  fibb[num] = fibb[num - 1] + fibb[num - 2]
+index = 1
+
+while fibb[index] < n do
+  index += 1
+  fibb[index] = fibb[index - 1] + fibb[index - 2]
 end
 
-#Эта последовательность начинается с первого элемента равного единице
-=begin
-fibb[0] = 1
-fibb[1] = 1
+fibb.delete_at(-1)
 
-for num in 2...n
-  fibb[num] = fibb[num - 1] + fibb[num - 2]
-end
-=end
+puts fibb

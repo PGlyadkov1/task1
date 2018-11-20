@@ -1,7 +1,5 @@
 
-array = Array.new
+array = []
 
-2.upto(20) { |i|
-  array[i] = i*5
-}
-array.compact!
+array = (10..100).step(5).to_a
+puts array

@@ -1,8 +1,9 @@
 
-months = { "январь" => 31, "февраль" => 28, "март" => 31, "апрель" => 30, "май" => 31, "июнь" => 30, "июль" => 31, "август" => 31, "сентябрь" => 30, "октябрь" => 31, "ноябрь" => 30, "декабрь" => 31}
+months = { 
+  january: 31, february: 28, march: 31, april: 30, 
+  may: 31, june: 30, july: 31, august: 31, 
+  september: 30, october: 31, november: 30, december: 31}
 
-months.each do |key,value|
-  if months[key] == 30
-    puts key
-  end
+months.each do |month, days|
+  puts month if days == 30
 end

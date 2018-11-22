@@ -24,6 +24,6 @@ raise 'Неверное число дней в феврале' if month == 2 && 
 raise 'Неверное число дней в невисокосный год' if month == 2 && day == 29 && !is_leap_year
 
 sum = day
-sum += days.take(month-1).sum
+sum += days.take(month - 1).sum
 
 print "Порядковый номер даты: #{sum}"

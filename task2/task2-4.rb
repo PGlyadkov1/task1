@@ -1,5 +1,4 @@
 
-hash = {}
 vowels_hash = {}
 
 vowels = %w[a e i o u y]

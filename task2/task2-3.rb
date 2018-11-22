@@ -1,19 +1,10 @@
 
 n = 100
 
-fibb = []
+fibb = [0,1]
 
-#в зависимости от определения последовательность Фиббоначи начинается с нуля или с единицы. 
-
-#Эта последовательность начинается с нулевого элемента равного нулю
-fibb[0] = 0
-fibb[1] = 1
-
-index = 1
-
-while fibb[index] < n do
-  index += 1
-  fibb[index] = fibb[index - 1] + fibb[index - 2]
+while fibb[-1] < n do
+  fibb << fibb[-1] + fibb[-2]
 end
 
 fibb.delete_at(-1)

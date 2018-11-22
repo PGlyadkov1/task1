@@ -1,8 +1,9 @@
 
-cart = Hash.new
+cart = {}
 
 sum = 0
 
+index= 1
 loop do
   puts "Введите название товара или стоп"
   product_name = gets.chomp
@@ -15,28 +16,15 @@ loop do
   puts "Введите цену единицы товара"
   price = gets.to_i
 
-  hash_n = Hash.new
-  hash_n = {price => number}
-
-  cart[product_name] = hash_n
+  cart [product_name] = {price: price, number: number}
 end
-
-# >зачем тогда использовать хеш?
-# >ключ все равно неизвестен, обратиться за информацией по нему не можем
-# >в общем, если хранить информацию в хеше, то лучше ее хранить под ключами
-
-# Я сделал ровно так, как говорилось в задании. Там было сказано, что нужен хэш именно такого вида.
-# И я хотел бы, чтобы проверялось на соответствие заданию в первую очередь.
-# Если у тебя какие-то претензии к формулировке задачи, пусть старший преподаватель исправит курс и условия данных нам задач.
-# А по существу я это замечание учту на будущее.
 
 cart.each {|key_goods,value_hash|
   puts "Наименование товара: #{key_goods}"
-  value_hash.each {|key,value| 
-    puts "Количество товара: #{value}"
-    puts "Цена товара: #{key}"
-    sum += key*value
-  }
+  puts "Количество товара: #{value_hash[:number]}"
+  puts "Цена товара: #{value_hash[:price]}"
+  sum += value_hash[:number] * value_hash[:price]
+
 }
 
 puts "Общая сумма: #{sum}"

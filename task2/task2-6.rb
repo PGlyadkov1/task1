@@ -3,7 +3,6 @@ cart = {}
 
 sum = 0
 
-index= 1
 loop do
   puts "Введите название товара или стоп"
   product_name = gets.chomp
@@ -16,15 +15,17 @@ loop do
   puts "Введите цену единицы товара"
   price = gets.to_i
 
-  cart [product_name] = {price: price, number: number}
+  cart[product_name] = {price: price, number: number}
 end
 
-cart.each {|key_goods,value_hash|
-  puts "Наименование товара: #{key_goods}"
-  puts "Количество товара: #{value_hash[:number]}"
-  puts "Цена товара: #{value_hash[:price]}"
-  sum += value_hash[:number] * value_hash[:price]
+cart.each do |product_name,product_info|
+  puts "Наименование товара: #{product_name}"
+  puts "Количество товара: #{product_info[:number]}"
+  puts "Цена единицы товара: #{product_info[:price]}"
+  puts "Цена всего товара: #{product_info[:number] * product_info[:price]}"
 
-}
+  sum += product_info[:number] * product_info[:price]
+
+end
 
 puts "Общая сумма: #{sum}"

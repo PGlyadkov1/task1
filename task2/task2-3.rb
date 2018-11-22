@@ -1,12 +1,12 @@
 
-n = 100
+limit = 100
 
 fibb = [0,1]
+next_number = 1
 
-while fibb[-1] < n do
-  fibb << fibb[-1] + fibb[-2]
+while next_number < limit do
+  fibb << next_number
+  next_number += fibb[-2]
 end
-
-fibb.delete_at(-1)
 
 puts fibb

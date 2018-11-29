@@ -22,10 +22,7 @@ class Route
 
   # Может выводить список всех станций по-порядку от начальной до конечной
   def get_final_route_list
-    final_route_list = @route_list
-    final_route_list.unshift(@first_station)
-    final_route_list << @last_station
-    final_route_list
+    return [@first_station] + @route_list + [@last_station]
   end
 
 end

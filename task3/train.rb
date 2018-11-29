@@ -35,15 +35,28 @@ class Train
   end 
 
   # Возвращать предыдущую станцию, текущую, следующую, на основе маршрута
-  #def current_station
-  #end
-
   def next_station
-    @route.get_final_route_list[@route.get_final_route_list.index(@current_station) + 1] unless @current_station == @route.last_station
+    #@route.get_final_route_list[@route.get_final_route_list.index(@current_station) + 1] unless @current_station == @route.last_station
+
+    if @current_station == @route.last_station
+      return @route.last_station
+    else
+      n = @route.get_final_route_list.index(@current_station)
+      m = @route.get_final_route_list[n + 1]
+      return m
+    end
   end
 
   def previous_station
-    @route.get_final_route_list[@route.get_final_route_list.index(@current_station) - 1] unless @current_station == @route.first_station
+    #@route.get_final_route_list[@route.get_final_route_list.index(@current_station) - 1] unless @current_station == @route.first_station
+
+    if @current_station == @route.first_station
+      return @route.first_station
+    else
+      n = @route.get_final_route_list.index(@current_station)
+      m = @route.get_final_route_list[n - 1]
+      return m
+    end
   end
 
   # Может перемещаться между станциями, указанными в маршруте. Перемещение возможно вперед и назад, но только на 1 станцию за раз.

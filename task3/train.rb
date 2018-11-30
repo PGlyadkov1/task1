@@ -1,7 +1,5 @@
 class Train
-  attr_accessor :speed
-  attr_reader :current_station
-  attr_reader :number_of_cars
+  attr_reader :speed, :current_station, :number_of_cars
 
   def initialize(number, type, number_of_cars)
     @number = number
@@ -15,6 +13,11 @@ class Train
   # Может тормозить (сбрасывать скорость до нуля)
   def slow_down
     @speed = 0
+  end
+
+  # Может ускоряться
+  def accelerate(delta_v)
+    @speed += delta_v if delta_v > 0
   end
 
   # Может прицеплять/отцеплять вагоны (по одному вагону за операцию, метод просто увеличивает или уменьшает количество вагонов).
@@ -32,40 +35,43 @@ class Train
   def take_route(route)
     @route = route
     @current_station = route.first_station
+    @route.first_station.receive_train(self)
   end 
 
   # Возвращать предыдущую станцию, текущую, следующую, на основе маршрута
   def next_station
-    #@route.get_final_route_list[@route.get_final_route_list.index(@current_station) + 1] unless @current_station == @route.last_station
-
     if @current_station == @route.last_station
       return @route.last_station
     else
-      n = @route.get_final_route_list.index(@current_station)
-      m = @route.get_final_route_list[n + 1]
+      n = @route.stations.index(@current_station)
+      m = @route.stations[n + 1]
       return m
     end
   end
 
   def previous_station
-    #@route.get_final_route_list[@route.get_final_route_list.index(@current_station) - 1] unless @current_station == @route.first_station
-
     if @current_station == @route.first_station
       return @route.first_station
     else
-      n = @route.get_final_route_list.index(@current_station)
-      m = @route.get_final_route_list[n - 1]
+      n = @route.stations.index(@current_station)
+      m = @route.stations[n - 1]
       return m
     end
   end
 
   # Может перемещаться между станциями, указанными в маршруте. Перемещение возможно вперед и назад, но только на 1 станцию за раз.
   def go_forward
+    return if @current_station == @route.last_station
+    @current_station.send_train(self)
     @current_station = self.next_station
+    @current_station.receive_train(self)
   end
 
   def go_backward
+    return if @current_station == @route.first_station
+    @current_station.send_train(self)
     @current_station = self.previous_station
+    @current_station.receive_train(self)
   end
 
   # Возвращает тип поезда

@@ -1,5 +1,5 @@
 class Train
-  attr_reader :speed, :number_of_cars
+  attr_reader :speed, :number_of_cars, :type
 
   def initialize(number, type, number_of_cars)
     @number = number
@@ -40,7 +40,6 @@ class Train
 
   # Возвращать предыдущую станцию, текущую, следующую, на основе маршрута
   def next_station
-    return if @current_station == @route.stations.size - 1
     @route.stations[@current_station + 1]
     end
   end
@@ -58,21 +57,16 @@ class Train
   # Может перемещаться между станциями, указанными в маршруте. Перемещение возможно вперед и назад, но только на 1 станцию за раз.
   def go_forward
     return unless next_station
-    @route.stations[current_station].send_train(self)
+    current_station.send_train(self)
     @current_station += 1
-    @route.stations[current_station].receive_train(self)
+    current_station.receive_train(self)
   end
 
   def go_backward
-    return unless first_station
-    @route.stations[current_station].send_train(self)
+    return unless previous_station
+    current_station.send_train(self)
     @current_station -= 1
-    @route.stations[current_station].receive_train(self)
-  end
-
-  # Возвращает тип поезда
-  def type_of_train
-    @type
+    current_station.receive_train(self)
   end
 
 end

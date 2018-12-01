@@ -1,28 +1,27 @@
 
 class Station
-  attr_reader :list_of_parked_trains
+  attr_reader :trains
 
 #
   def initialize(name)
     @name = name
-    @list_of_parked_trains = []
+    @trains = []
   end
 
 # Может принимать поезда (по одному за раз)
   def receive_train(train)
-    #если поезда нет в list_of_parked_trains. Он туда вносится
-    @list_of_parked_trains << train unless @list_of_parked_trains.include?(train)
+    #если поезда нет в trains. Он туда вносится
+    @trains << train unless @trains.include?(train)
   end
 
 # Может возвращать список поездов на станции по типу (см. ниже): кол-во грузовых, пассажирских
   def trains_by_type(type)
-    select_trains = @list_of_parked_trains.select { |train| train.type_of_train == type}
-    select_trains.count
+    @trains.count { |train| train.type_of_train == type}
   end
 
 # Может отправлять поезда (по одному за раз, при этом, поезд удаляется из списка поездов, находящихся на станции)
   def send_train(train)
-    @list_of_parked_trains.delete(train)
+    @trains.delete(train)
   end
 
 

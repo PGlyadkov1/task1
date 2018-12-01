@@ -10,13 +10,13 @@ class Route
 
   # Может добавлять промежуточную станцию в список
   def add_station(station)
-    @stations.insert(-2,station)
+    @stations.insert(-2, station)
   end
 
   # Может удалять промежуточную станцию из списка
   def delete_station(station)
     return if [@stations.first, @stations.last].include?(station)
-    @stations.delete(station) if @stations.include?(station)
+    @stations.delete(station)
   end
 
 end
